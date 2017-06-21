@@ -24,7 +24,7 @@ end
   
   private  
     def root_path
-      root_path = (Msg.find_by title: 'root_path').value
+      root_path = (Msg.find_by title: 'root_path').field
     end  
   
     

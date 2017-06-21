@@ -1,0 +1,21 @@
+%h1
+  Hello,
+  =@user.name 
+  !
+  
+  
+- if @results
+  - @results.each do |res|
+  
+    %h3
+      Результат тесту
+      = res.test_title
+      -
+      =res.mark
+      
+    %hr
+    %br/
+    %br/
+    
+    
+=link_to 'На головну', '/'     

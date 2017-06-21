@@ -1,29 +1,30 @@
-class TestsController < ApplicationController
+class MsgsController < ApplicationController
   
 protect_from_forgery with: :null_session  
-#before_action :root_path, only: [:create, :update]  
+#before_action :root_path, only: [:find]  
   
 
-def all
+def error
   
-  @tests = Test.all
+  @msg = (Msg.find_by title: 'error').field
   
 end
 
 
 
-def index
+def success_created
   
+  @msg = (Msg.find_by title: 'success_created').field
   
-  
-end  
- 
+end
 
-def success
+
+
+def success_tested
   
-  @msg = (Msg.find_by title: 'Success_tested').field
+  @msg = (Msg.find_by title: 'success_tested').field
   
-end  
+end
 
 #_____________________________________________________________________________________________________________________________________________   
   

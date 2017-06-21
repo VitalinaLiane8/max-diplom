@@ -1,0 +1,27 @@
+%h1.text-success
+  Форма входу:
+
+  
+= form_for @user, url: { controller: 'users', action: 'find' } do |f|
+
+  Iм`я :  
+  =f.text_field :name,  type:         'text', 
+                        required:     '',
+                        maxlength:   50
+                        
+  %br/
+  
+  Email : 
+  =f.text_field :email, type:         'email', 
+                        required:     '', 
+                        maxlength:   50
+  %br/
+
+  
+  Password : 
+  =f.text_field :password, type:         'password', 
+                        required:     '', 
+                        maxlength:   50
+  %br/  
+  
+  = f.submit 'Продовжити'

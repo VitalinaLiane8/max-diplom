@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   
 protect_from_forgery with: :null_session  
-#before_action :root_path, only: [:create, :update]  
+before_action :root_path, only: [:find]  
   
 
 def new
@@ -14,15 +14,29 @@ end
 
 def find
   
+  email = params[:user][:email]
   
-  
-end  
-
-
-
-def created
-  
-  @msg = (Msg.find_by title: 'Success_created').field
+  if (User.find_by email: email) and (@user = User.find_by email: email)
+    if @user.password == params[:user][:password]
+      
+      redirect_to root_path + 'users/income/' + @user.id.to_s + '/' + @user.key.to_s
+      
+    else 
+      redirect_to root_path + 'msgs/error'
+    end  
+    
+  else  
+    @user = User.new
+    
+    @user.name = params[:user][:name]
+    @user.email = params[:user][:email]
+    @user.password = params[:user][:password]
+    @user.key = [*5..30].sample.to_s + [*5..30].sample.to_s + [*5..30].sample.to_s + [*5..30].sample.to_s
+    
+    @user.save
+    
+    redirect_to root_path + 'msgs/success_created'
+  end  
   
 end  
 
@@ -30,7 +44,21 @@ end
 
 def income
   
+  user_id = params[:user_id]
+  key = params[:key]
   
+  if User.find(user_id) and (@user = User.find(user_id))
+    if @user.key == key
+      @results = @user.results
+      
+    else
+      redirect_to root_path + 'msgs/error'
+    end  
+    
+    
+  else  
+    redirect_to root_path + 'msgs/error'
+  end
   
 end  
 
@@ -39,7 +67,7 @@ end
   
   private  
     def root_path
-      root_path = (Msg.find_by title: 'root_path').value
+      root_path = (Msg.find_by title: 'root_path').field
     end  
   
     

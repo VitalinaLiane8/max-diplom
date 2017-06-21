@@ -4,7 +4,7 @@ ActiveAdmin.register User do
 #
 # permit_params :list, :of, :attributes, :on, :model
 #
-  permit_params :test_title, :mark, :test_id
+  permit_params :test_title, :mark, :test_id, :user_id
   
 # or
 #
