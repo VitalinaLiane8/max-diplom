@@ -1,0 +1,5 @@
+class Msg < ApplicationRecord
+
+
+  
+end
