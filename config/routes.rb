@@ -21,8 +21,9 @@ Rails.application.routes.draw do
   get    'msgs/success_created'
   
   
-  match  'tests/all/:user_id/:key',                                       to: 'tests#all',                          via: 'get'
-  match  'test/:user_id/:key/:test_id',                                   to: 'tests#index',                         via: 'get'    
+  match  'tests/all/:user_id/:key',                                       to: 'tests#all',                             via: 'get'
+  match  'test/:user_id/:key/:test_id',                                   to: 'tests#index',                           via: 'get'    
+  post   'results/define_mark',                                           to: 'results#define_mark'      
 
 
   root 'users#new'

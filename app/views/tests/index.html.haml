@@ -1,12 +1,27 @@
 %h1
   = @test.title
 
-- @test.qws.each do |qw|
-  %h2
-    = qw.title
+= form_tag({controller: 'results', action: 'define_mark'}) do
+  - @test.qws.each do |qw|
+    %h2
+      = qw.title
     
-  - qw.answers.each do |a|  
-    %h3
-      = a.title
+    - qw.answers.each do |a|  
+      %span{style: 'font-size: 200%;'}
+        = radio_button_tag(qw.title, a.point, checked = true) 
+        = label_tag(qw.title + '_' + a.point.to_s, a.title) 
+  
       
-  %hr/
+      
+    %hr/
+  
+  
+  
+  = hidden_field_tag(:test_id, @test.id)
+  = hidden_field_tag(:user_id, @user.id)
+  = hidden_field_tag(:key, @user.key)
+  
+  
+  %br/
+  %br/
+  = submit_tag('Узнать результат')
