@@ -1,0 +1,6 @@
+- @tests.each do |test| 
+  %h1
+    = test.title
+  %h2  
+    =link_to 'Пройти тест', @root_path + 'test/' + @user.id.to_s + '/' + @user.key.to_s + '/' + test.id.to_s
+  %hr/  

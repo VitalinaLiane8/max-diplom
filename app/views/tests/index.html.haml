@@ -1,0 +1,12 @@
+%h1
+  = @test.title
+
+- @test.qws.each do |qw|
+  %h2
+    = qw.title
+    
+  - qw.answers.each do |a|  
+    %h3
+      = a.title
+      
+  %hr/

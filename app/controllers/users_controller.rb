@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   
 protect_from_forgery with: :null_session  
-before_action :root_path, only: [:find]  
+before_action :root_path, only: [:find, :income]  
   
 
 def new
@@ -50,6 +50,8 @@ def income
   if User.find(user_id) and (@user = User.find(user_id))
     if @user.key == key
       @results = @user.results
+      
+      @new_test_link = root_path + 'tests/all/' + @user.id.to_s + '/' + @user.key.to_s
       
     else
       redirect_to root_path + 'msgs/error'

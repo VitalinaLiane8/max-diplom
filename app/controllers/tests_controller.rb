@@ -6,7 +6,17 @@ protect_from_forgery with: :null_session
 
 def all
   
-  @tests = Test.all
+  user_id = params[:user_id]
+  key = params[:key]
+  
+  if User.find(user_id) and (@user = User.find(user_id)) and @user.key == key 
+    
+      @tests = Test.all
+      @root_path = root_path
+      
+  else
+    redirect_to root_path + 'msgs/error'    
+  end  
   
 end
 
@@ -14,7 +24,16 @@ end
 
 def index
   
+  user_id = params[:user_id]
+  key = params[:key]
   
+  test_id = params[:test_id]
+  
+  if User.find(user_id) and (@user = User.find(user_id)) and @user.key == key and Test.find(test_id) and (@test = Test.find(test_id))
+  else
+    redirect_to root_path + 'msgs/error'    
+  end      
+    
   
 end  
  

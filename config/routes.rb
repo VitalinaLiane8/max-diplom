@@ -19,6 +19,10 @@ Rails.application.routes.draw do
   
   get    'msgs/error'
   get    'msgs/success_created'
+  
+  
+  match  'tests/all/:user_id/:key',                                       to: 'tests#all',                          via: 'get'
+  match  'test/:user_id/:key/:test_id',                                   to: 'tests#index',                         via: 'get'    
 
 
   root 'users#new'
