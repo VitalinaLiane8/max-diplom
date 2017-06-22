@@ -30,6 +30,7 @@ def index
   test_id = params[:test_id]
   
   if User.find(user_id) and (@user = User.find(user_id)) and @user.key == key and Test.find(test_id) and (@test = Test.find(test_id))
+    
   else
     redirect_to root_path + 'msgs/error'    
   end      

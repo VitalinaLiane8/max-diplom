@@ -2,9 +2,13 @@
   = @test.title
 
 = form_tag({controller: 'results', action: 'define_mark'}) do
+
   - @test.qws.each do |qw|
     %h2
-      = qw.title
+      = qw.title.split('|')[0]
+
+    %h2
+      = qw.title.split('|')[1]
     
     - qw.answers.each do |a|  
       %span{style: 'font-size: 200%;'}
